@@ -1,0 +1,13 @@
+{
+    "asset": "3e2430c0739d9ea42b1ae2d6059d05ba",
+    "fileName": "0199d071-5b46-7af3-b763-7ddebbe17e78.wav",
+    "prompt": "sex",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "11c01c6d4ee803933ab4fa41d29fb857",
+    "duration": 6.199999809265137,
+    "autoTrim": true,
+    "hasReference": false
+}

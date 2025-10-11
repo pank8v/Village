@@ -1,0 +1,11 @@
+{
+    "asset": "4a187916a0069e6489d840da1b1475a0",
+    "fileName": "0199d06c-b1e7-7dae-95b4-3676b94612b1.pose.json",
+    "prompt": "smoking cigarette",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 2061634045,
+    "w3CTraceId": "b8ef5fd77eff47ddb26f9cce2e8f03a2",
+    "isTrimmed": false
+}

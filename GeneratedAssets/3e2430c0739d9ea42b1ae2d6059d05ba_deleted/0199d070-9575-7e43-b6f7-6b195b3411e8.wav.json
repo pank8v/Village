@@ -1,0 +1,13 @@
+{
+    "asset": "3e2430c0739d9ea42b1ae2d6059d05ba",
+    "fileName": "0199d070-9575-7e43-b6f7-6b195b3411e8.wav",
+    "prompt": "gun shot",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "c412a431923dabd882e0154c3268965b",
+    "duration": 1.0,
+    "autoTrim": true,
+    "hasReference": false
+}

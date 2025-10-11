@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
     public bool isSprinting { get; private set; }
 
     public bool isJumping { get; private set; }
+
+    public event Action OnInteractTriggered;
     
     private void Awake() {
         inputSystemActions = new InputSystem_Actions();
@@ -23,6 +25,7 @@ public class InputHandler : MonoBehaviour
         inputSystemActions.Player.Look.canceled += OnLookCanceled;
         inputSystemActions.Player.Jump.performed += OnJumpPerformed;
         inputSystemActions.Player.Jump.canceled += OnJumpCanceled;
+        inputSystemActions.Player.Interact.performed += OnInteractionPerformed;
 
     }
 
@@ -58,5 +61,9 @@ public class InputHandler : MonoBehaviour
     
     private void OnJumpCanceled(InputAction.CallbackContext ctx) {
         isJumping = false;
+    }
+    
+    private void OnInteractionPerformed(InputAction.CallbackContext ctx) {
+        OnInteractTriggered?.Invoke();
     }
 }

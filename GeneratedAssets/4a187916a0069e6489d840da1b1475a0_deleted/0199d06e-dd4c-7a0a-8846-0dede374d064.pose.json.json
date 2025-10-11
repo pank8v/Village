@@ -1,0 +1,11 @@
+{
+    "asset": "4a187916a0069e6489d840da1b1475a0",
+    "fileName": "0199d06e-dd4c-7a0a-8846-0dede374d064.pose.json",
+    "prompt": "sex",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 1718229337,
+    "w3CTraceId": "3016cc6d45a7d5621900df943fade4cd",
+    "isTrimmed": false
+}

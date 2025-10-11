@@ -1,0 +1,11 @@
+{
+    "asset": "4a187916a0069e6489d840da1b1475a0",
+    "fileName": "0199d06e-083f-7832-acbf-fdcf6d1aab3a.pose.json",
+    "prompt": "shooting revolver",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 560871204,
+    "w3CTraceId": "0076d28110d515ade3b98b2995379c89",
+    "isTrimmed": false
+}
