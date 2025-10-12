@@ -13,6 +13,7 @@ public class InputHandler : MonoBehaviour
     public bool isJumping { get; private set; }
 
     public event Action OnInteractTriggered;
+    public event Action OnAttackTriggered;
     
     private void Awake() {
         inputSystemActions = new InputSystem_Actions();
@@ -26,6 +27,7 @@ public class InputHandler : MonoBehaviour
         inputSystemActions.Player.Jump.performed += OnJumpPerformed;
         inputSystemActions.Player.Jump.canceled += OnJumpCanceled;
         inputSystemActions.Player.Interact.performed += OnInteractionPerformed;
+        inputSystemActions.Player.Attack.performed += OnAttackPerformed;
 
     }
 
@@ -65,5 +67,9 @@ public class InputHandler : MonoBehaviour
     
     private void OnInteractionPerformed(InputAction.CallbackContext ctx) {
         OnInteractTriggered?.Invoke();
+    }
+    
+    private void OnAttackPerformed(InputAction.CallbackContext ctx) {
+        OnAttackTriggered?.Invoke();
     }
 }

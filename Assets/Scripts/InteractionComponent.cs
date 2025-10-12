@@ -29,6 +29,7 @@ public class InteractionComponent : MonoBehaviour
     
 
     private void FindInteractableObjects() {
+        currentInteractable = null;
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, detectionLayerMask);
         float minDistance = Mathf.Infinity;
         for (int i = 0; i < hits.Length; i++) {
