@@ -1,10 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Mirror;
 
-public class InputHandler : MonoBehaviour
+public class InputHandler : NetworkBehaviour
 {
+    private PlayerInput playerInput;
     private InputSystem_Actions inputSystemActions;
     public Vector2 movementInput { get; private set; }
     public Vector2 lookInput { get; private set; }
@@ -15,61 +16,59 @@ public class InputHandler : MonoBehaviour
     public event Action OnInteractTriggered;
     public event Action OnAttackTriggered;
     
+    
     private void Awake() {
-        inputSystemActions = new InputSystem_Actions();
-        inputSystemActions.Enable();
-        inputSystemActions.Player.Move.performed += OnMovePerformed;
-        inputSystemActions.Player.Move.canceled += OnMoveCanceled;
+     //   inputSystemActions = new InputSystem_Actions();
+     //   if(!isLocalPlayer) return;
+     //   BindActions();
+      //  playerInput = GetComponent<PlayerInput>();
+     //   if (!isLocalPlayer) {
+       //     playerInput.actions = inputSystemActions.asset;
+            
+     //   }
+    }
+    
+
+    private void BindActions() {
+      //  inputSystemActions.Player.Move.performed += OnMovePerformed;
+         //inputSystemActions.Player.Move.canceled += OnMoveCanceled;
         inputSystemActions.Player.Sprint.performed += OnSprintPerformed;
-        inputSystemActions.Player.Sprint.canceled += OnSprintCanceled;
+       // inputSystemActions.Player.Sprint.canceled += OnSprintCanceled;
         inputSystemActions.Player.Look.performed += OnLookPerformed;
-        inputSystemActions.Player.Look.canceled += OnLookCanceled;
+      //  inputSystemActions.Player.Look.canceled += OnLookCanceled;
         inputSystemActions.Player.Jump.performed += OnJumpPerformed;
-        inputSystemActions.Player.Jump.canceled += OnJumpCanceled;
+    //    inputSystemActions.Player.Jump.canceled += OnJumpCanceled;
         inputSystemActions.Player.Interact.performed += OnInteractionPerformed;
         inputSystemActions.Player.Attack.performed += OnAttackPerformed;
-
     }
-
-
-    private void OnMovePerformed(InputAction.CallbackContext ctx) {
+    
+    public void OnMovementPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
         movementInput = ctx.ReadValue<Vector2>();
     }
-
-    private void OnMoveCanceled(InputAction.CallbackContext ctx) {
-        movementInput = Vector2.zero;
-    }
     
-    private void OnLookPerformed(InputAction.CallbackContext ctx) {
+    public void OnLookPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
         lookInput = ctx.ReadValue<Vector2>();
     }
-
-    private void OnLookCanceled(InputAction.CallbackContext ctx) {
-        lookInput = Vector2.zero;
-    }
-
-
-    private void OnSprintPerformed(InputAction.CallbackContext ctx) {
-        isSprinting = true;
-    }
-
-    private void OnSprintCanceled(InputAction.CallbackContext ctx) {
-        isSprinting = false;
+    
+    public void OnSprintPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
+        isSprinting = ctx.action.triggered;
     }
     
-    private void OnJumpPerformed(InputAction.CallbackContext ctx) {
-        isJumping = true;
+    public void OnJumpPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
+        isJumping = ctx.action.triggered;
     }
     
-    private void OnJumpCanceled(InputAction.CallbackContext ctx) {
-        isJumping = false;
-    }
-    
-    private void OnInteractionPerformed(InputAction.CallbackContext ctx) {
+    public void OnInteractionPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
         OnInteractTriggered?.Invoke();
     }
     
-    private void OnAttackPerformed(InputAction.CallbackContext ctx) {
+    public void OnAttackPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
         OnAttackTriggered?.Invoke();
     }
 }
