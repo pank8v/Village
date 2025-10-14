@@ -1,20 +1,22 @@
 using UnityEngine;
 using FMODUnity;
 
-public class WeaponSound : MonoBehaviour
+public class WeaponSound : MonoBehaviour, IWeaponModule
 {
    [SerializeField] private EventReference shootEvent;
    private IWeapon weapon;
-   private void Awake() {
-      weapon = GetComponent<IWeapon>();
-   }
 
-   private void OnEnable() {
-      weapon.OnAttack += PlayShootSound;
+   public void Initialize(Weapon weapon) {
+      this.weapon = weapon;
+      if (this.weapon != null) {
+         weapon.OnAttack += PlayShootSound;
+      }
    }
-
+   
    private void OnDisable() {
-      weapon.OnAttack -= PlayShootSound;
+      if (weapon != null) {
+         weapon.OnAttack -= PlayShootSound;
+      }
    }
    
    private void PlayShootSound() {

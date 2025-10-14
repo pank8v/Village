@@ -1,26 +1,36 @@
 using UnityEngine;
 using System;
 
-public class RangeWeapon : MonoBehaviour, IWeapon, IReloadable
+public class RangeWeapon : MonoBehaviour, IWeapon
 {
+    [SerializeField] private Transform muzzleTransform;
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private float maxRange = 200f;
+    
+    
     public event Action OnAttack;
-    private Vector3 muzzlePosition;
+    public event Action OnReload;
 
     
     public void Attack(Transform attackPos) {
         Vector3 targetPoint;
         RaycastHit hit;
-        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, 200f)) {
+        
+        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, maxRange)) {
             targetPoint = hit.point;
-            Debug.Log(hit.collider.gameObject.name);
         }
         else {
-            targetPoint = Vector3.zero;
-        }
-        Vector3 direction = (targetPoint - muzzlePosition).normalized;
-        
-        OnAttack?.Invoke();
+            targetPoint = attackPos.position + attackPos.forward * maxRange;
 
+        }
+        Vector3 direction = (targetPoint - muzzleTransform.position).normalized;
+        
+        bullet = Instantiate(bullet, muzzleTransform.position, muzzleTransform.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb) {
+            rb.AddForce(direction * 50f, ForceMode.Impulse);
+        }
+        OnAttack?.Invoke();
     }
 
     

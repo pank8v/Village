@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
         if (damage > 0) {
             health -= damage;
             OnHealthChanged?.Invoke();
+            Debug.Log(health);
         }
     }
 

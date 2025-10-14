@@ -18,7 +18,7 @@ public class WeaponComponent : MonoBehaviour
         if (attacker != null) {
             attacker.OnAttack += UseWeapon;
         }
-    }
+    }    
 
     private void Start() {
         Instantiate(weaponPrefab, weaponHolder.position, quaternion.identity, weaponHolder);

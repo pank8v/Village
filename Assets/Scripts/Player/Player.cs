@@ -1,8 +1,9 @@
 using UnityEngine;
 using System;
-public class Player : MonoBehaviour, IInteractor, IAttacker
+public class Player : MonoBehaviour, IInteractor, IAttacker, IDamageable
 {
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private Health health;
     public event Action OnInteract;
     public event Action OnAttack;
 
@@ -30,5 +31,8 @@ public class Player : MonoBehaviour, IInteractor, IAttacker
     private void AttackTrigger() {
         OnAttack?.Invoke();
     }
-    
+
+    public void TakeDamage(float damage) {
+        health.TakeDamage(damage);
+    }
 }
