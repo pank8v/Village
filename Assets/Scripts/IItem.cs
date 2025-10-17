@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IItem
 {
-    public void Use();
-   // public GameObject GameObject { get; }
-    public ItemSO ItemSO { get; }
+    public void Use(Transform raycastPosition);
+ //   public GameObject GameObject { get; }
+  // public ItemSO ItemSO { get; }
 
 }
 

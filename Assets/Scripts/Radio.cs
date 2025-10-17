@@ -4,25 +4,26 @@ public class Radio : MonoBehaviour, IItem, IInteractable
 {
     [SerializeField] private ItemSO itemSO;
     private IInteractor interactor;
+    private IUser user;
     
+    public GameObject GameObject => gameObject;
     public ItemSO ItemSO => itemSO;
     
     public void Interact(IInteractor interactor) {
-        this.interactor = interactor;
-        AddItem();
-    }
-    
-    
-    public void Use() {
-        Debug.Log("Radio enabled");
-    }
-    public GameObject GameObject => this.GameObject;
-
-    private void AddItem() {
         if (interactor != null) {
-            interactor.InventoryComponent.AddItem(this);
-            Debug.Log("Item added");
+            this.interactor = interactor;
+            AddItem();
         }
     }
     
+    public void Use(Transform _) {
+        Debug.Log("Radio enabled");
+    }
+    
+    private void AddItem() {
+        user = (interactor as IUser);
+        if (user != null) {
+            user.InventoryComponent.AddItem(this.GameObject);
+        }
+    }
 }

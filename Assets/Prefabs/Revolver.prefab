@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3810267451805100080}
   - component: {fileID: 2644201588201609878}
   - component: {fileID: -5282584430469009599}
+  - component: {fileID: -866604436884174798}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -110,6 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c54e933caa8500479afec046db1629a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  fireTimer: 0.5
+  weaponPrefab: {fileID: 2459066537258255996}
+  weaponContext:
+    attackPosition: {fileID: 0}
+    fireRate: 0.5
 --- !u!114 &-3810267451805100080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +167,19 @@ MonoBehaviour:
   smoothTime: 3
   returnSpeed: 1
   muzzleFlash: {fileID: 7783323770030398189}
+--- !u!114 &-866604436884174798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2459066537258255996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7289a826762e153428f38a3194cb1e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupComponent
+  itemPrefab: {fileID: 2459066537258255996}
 --- !u!1 &5403436436564872126
 GameObject:
   m_ObjectHideFlags: 0

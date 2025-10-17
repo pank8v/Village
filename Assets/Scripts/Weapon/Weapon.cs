@@ -1,13 +1,12 @@
 using UnityEngine;
 using System;
 
-public class Weapon : MonoBehaviour, IWeapon
+public class Weapon : MonoBehaviour, IWeapon, IItem
 {
    public event Action OnAttack;
    public event Action OnReload;
 
    public float fireTimer = 0.5f;
-   
    
    private IWeaponModule[] modules;
    public WeaponContext weaponContext;
@@ -19,10 +18,15 @@ public class Weapon : MonoBehaviour, IWeapon
          modules[i].Initialize(this);
       }
    }
-
+   
    private void Update() {
       fireTimer += Time.deltaTime;
    }
+
+   public void Use(Transform raycastPosition) {
+      Attack(raycastPosition);
+   }
+   
    
    public void Attack(Transform attackPos) {
       if (fireTimer >= weaponContext.fireRate) {
@@ -32,5 +36,6 @@ public class Weapon : MonoBehaviour, IWeapon
       }
 
    }
+   
    
 }

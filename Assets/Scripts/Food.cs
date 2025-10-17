@@ -5,7 +5,7 @@ public class Food : MonoBehaviour, IItem
    [SerializeField] private ItemSO itemSO;
    public ItemSO ItemSO => itemSO;
    
-   public void Use() {
+   public void Use(Transform _) {
       Debug.Log("Food used");
    }
 

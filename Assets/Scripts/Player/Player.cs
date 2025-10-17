@@ -11,10 +11,8 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
 
     public InventoryComponent InventoryComponent => inventoryComponent;
     [SerializeField] private Transform attackPosition;
-    
-    public Transform AttackPosition {
-        get => attackPosition;
-    }
+
+    public Transform AttackPosition => attackPosition;
     
     
     private void OnEnable() {
@@ -41,6 +39,7 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
     private void UseTrigger() {
         OnUse?.Invoke();
     }
+    
     
     public void TakeDamage(float damage) {
         health.TakeDamage(damage);

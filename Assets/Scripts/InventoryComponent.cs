@@ -15,7 +15,6 @@ public class InventoryComponent : MonoBehaviour
 
     private void OnEnable() {
         if (user != null) {
-            user.OnUse -= UseItem;
             user.OnUse += UseItem;
         }
     }
@@ -27,15 +26,20 @@ public class InventoryComponent : MonoBehaviour
     }
 
 
-    public void AddItem(IItem item) {
-        items.Add(item);
-        activeItem = item;
-        Instantiate(activeItem.ItemSO.ItemPrefab, itemHolder.position, Quaternion.identity, itemHolder);
+    public void AddItem(GameObject item) {
+        var newItem = Instantiate(item, itemHolder.position, Quaternion.identity, itemHolder);
+        activeItem = newItem.GetComponent<IItem>();
     }
     
     
     private void UseItem() {
-        activeItem.Use();
+        if (activeItem != null) {
+            activeItem.Use(user.AttackPosition);
+
+        }
+        else {
+            Debug.Log("null");
+        }
     }
     
 
