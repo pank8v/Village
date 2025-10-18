@@ -10,9 +10,12 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
    
    private IWeaponModule[] modules;
    public WeaponContext weaponContext;
-   
+
+   private GameObject itemGameObject;
+   public GameObject ItemGameObject => itemGameObject;
    
    private void Awake() {
+      itemGameObject = gameObject;
       modules = GetComponents<IWeaponModule>();
       for (int i = 0; i < modules.Length; i++) {
          modules[i].Initialize(this);

@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class PickupComponent : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject itemPrefab;
+  //  private GameObject itemPrefab;
     private IUser user;
     private IInteractor interactor;
-    private IWeapon item;
+    private IItem item;
     
 
     private void Awake() {
-        item = itemPrefab.GetComponent<IWeapon>();
+    //    itemPrefab = this.gameObject;
+        item = GetComponent<IItem>();
     }
     
     public void Use(Transform raycastPosition) {
-        item.Attack(raycastPosition);
+        item.Use(raycastPosition);
     }
     
     public void Interact(IInteractor interactor) {
@@ -27,7 +28,7 @@ public class PickupComponent : MonoBehaviour, IInteractable
     private void AddItem() {
         user = (interactor as IUser);
         if (user != null) {
-            user.InventoryComponent.AddItem(itemPrefab);
+            user.InventoryComponent.AddItem(item);
         }
     }
 

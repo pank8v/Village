@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 6780630359199274216}
   - component: {fileID: 2864169592853253355}
   - component: {fileID: 5039501550834553268}
-  - component: {fileID: 2160097720957086510}
   - component: {fileID: 6105932710894265685}
   - component: {fileID: 5549983036061427464}
   - component: {fileID: -438019660284082775}
@@ -358,20 +357,6 @@ MonoBehaviour:
   detectionLayerMask:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &2160097720957086510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8788320170435643911}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87485ba2b304584c955ab3c2b1fd80f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponComponent
-  weaponHolder: {fileID: 6474031612822052788}
-  weaponPrefab: {fileID: 2459066537258255996, guid: 982d2added462454d990014d0d4f34ab, type: 3}
 --- !u!114 &6105932710894265685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +596,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -438019660284082775}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnDropPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e841146b-dd3e-4e34-b792-93e405c2cc06
+    m_ActionName: 'Player/Drop[/Keyboard/g]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -628,6 +629,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7c86e24f351564c998ef0d651f6a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryComponent
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8
   itemHolder: {fileID: 6474031612822052788}
 --- !u!1 &8866475313880595407
 GameObject:

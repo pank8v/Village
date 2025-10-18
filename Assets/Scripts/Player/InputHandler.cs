@@ -14,6 +14,7 @@ public class InputHandler : NetworkBehaviour
 
     public event Action OnInteractTriggered;
     public event Action OnAttackTriggered;
+    public event Action OnDropTriggered;
     
     
     public void OnMovementPerformed(InputAction.CallbackContext ctx) {
@@ -46,5 +47,11 @@ public class InputHandler : NetworkBehaviour
         if (!isLocalPlayer) return;
         if (!ctx.performed) return;
         OnAttackTriggered?.Invoke();
+    }
+
+    public void OnDropPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
+        if(!ctx.performed) return;
+        OnDropTriggered?.Invoke();
     }
 }
