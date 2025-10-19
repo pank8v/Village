@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
     [SerializeField] private Health health;
     [SerializeField] private InventoryComponent inventoryComponent;
     public event Action OnUse;
+    public event Action<int> OnItemSwitch;
     public event Action OnInteract;
     public event Action OnAttack;
     public event Action OnDrop;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
     //    inputHandler.OnAttackTriggered += AttackTrigger;
     inputHandler.OnAttackTriggered += UseTrigger;
     inputHandler.OnDropTriggered += DropTrigger;
+    inputHandler.OnItemSwitch += SwitchTrigger;
     
     }
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
         inputHandler.OnInteractTriggered -= InteractTrigger;
         inputHandler.OnAttackTriggered -= UseTrigger;
         inputHandler.OnDropTriggered -= DropTrigger;
+        inputHandler.OnItemSwitch -= SwitchTrigger;
 
       //  inputHandler.OnAttackTriggered -= AttackTrigger;
     }
@@ -46,6 +49,10 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
 
     private void DropTrigger() {
         OnDrop?.Invoke();
+    }
+
+    private void SwitchTrigger(int index) {
+        OnItemSwitch?.Invoke(index);
     }
     
     public void TakeDamage(float damage) {

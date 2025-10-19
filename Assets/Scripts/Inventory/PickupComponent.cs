@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class PickupComponent : MonoBehaviour, IInteractable
 {
-  //  private GameObject itemPrefab;
     private IUser user;
     private IInteractor interactor;
     private IItem item;
     
 
     private void Awake() {
-    //    itemPrefab = this.gameObject;
         item = GetComponent<IItem>();
     }
     

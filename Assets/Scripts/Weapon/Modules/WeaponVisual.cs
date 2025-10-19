@@ -17,7 +17,7 @@ public class WeaponVisual : MonoBehaviour, IWeaponModule
       }
    }
    
-   private void OnDisable() {
+   private void OnDestroy() {
       if (weapon != null) {
          weapon.OnAttack -= HandleShot;
       }

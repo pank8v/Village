@@ -7,9 +7,3 @@ public interface IItem
   // public ItemSO ItemSO { get; }
 
 }
-
-public struct ItemContext
-{
-    public Transform rayCastPoint;
-    public Vector3 attackPoint;
-}

@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   fireTimer: 0.5
-  weaponPrefab: {fileID: 2459066537258255996}
   weaponContext:
     attackPosition: {fileID: 0}
     fireRate: 0.5
+  itemGameObject: {fileID: 2459066537258255996}
 --- !u!114 &-3810267451805100080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7289a826762e153428f38a3194cb1e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupComponent
-  itemPrefab: {fileID: 2459066537258255996}
 --- !u!1 &5403436436564872126
 GameObject:
   m_ObjectHideFlags: 0

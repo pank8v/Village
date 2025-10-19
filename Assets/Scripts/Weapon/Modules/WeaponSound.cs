@@ -13,7 +13,7 @@ public class WeaponSound : MonoBehaviour, IWeaponModule
       }
    }
    
-   private void OnDisable() {
+   private void OnDestroy() {
       if (weapon != null) {
          weapon.OnAttack -= PlayShootSound;
       }

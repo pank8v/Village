@@ -15,6 +15,7 @@ public class InputHandler : NetworkBehaviour
     public event Action OnInteractTriggered;
     public event Action OnAttackTriggered;
     public event Action OnDropTriggered;
+    public event Action<int> OnItemSwitch;
     
     
     public void OnMovementPerformed(InputAction.CallbackContext ctx) {
@@ -53,5 +54,17 @@ public class InputHandler : NetworkBehaviour
         if (!isLocalPlayer) return;
         if(!ctx.performed) return;
         OnDropTriggered?.Invoke();
+    }
+
+    public void OnFirstItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(0);
+    }
+    
+    public void OnSecondItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!isLocalPlayer) return;
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(1);
     }
 }

@@ -7,4 +7,5 @@ public interface IUser
     public InventoryComponent InventoryComponent { get; }
     public event Action OnUse;
     public event Action OnDrop;
+    public event Action<int> OnItemSwitch;
 }

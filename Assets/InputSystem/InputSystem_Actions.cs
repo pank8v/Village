@@ -181,6 +181,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToFirstItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b870596-b9a1-43c0-af08-e015c96c3c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToSecondItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfdb668e-3a51-47e6-ab92-7f6ec6e524f1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -577,6 +595,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4f6f099-5acd-4503-b1bc-45c36166a4bb"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToFirstItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47ae34b3-5f0f-4342-b686-ed3997824c5e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToSecondItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1174,6 +1214,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_SwitchToFirstItem = m_Player.FindAction("SwitchToFirstItem", throwIfNotFound: true);
+        m_Player_SwitchToSecondItem = m_Player.FindAction("SwitchToSecondItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1277,6 +1319,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_SwitchToFirstItem;
+    private readonly InputAction m_Player_SwitchToSecondItem;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1328,6 +1372,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Drop".
         /// </summary>
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToFirstItem".
+        /// </summary>
+        public InputAction @SwitchToFirstItem => m_Wrapper.m_Player_SwitchToFirstItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToSecondItem".
+        /// </summary>
+        public InputAction @SwitchToSecondItem => m_Wrapper.m_Player_SwitchToSecondItem;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1384,6 +1436,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @SwitchToFirstItem.started += instance.OnSwitchToFirstItem;
+            @SwitchToFirstItem.performed += instance.OnSwitchToFirstItem;
+            @SwitchToFirstItem.canceled += instance.OnSwitchToFirstItem;
+            @SwitchToSecondItem.started += instance.OnSwitchToSecondItem;
+            @SwitchToSecondItem.performed += instance.OnSwitchToSecondItem;
+            @SwitchToSecondItem.canceled += instance.OnSwitchToSecondItem;
         }
 
         /// <summary>
@@ -1425,6 +1483,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @SwitchToFirstItem.started -= instance.OnSwitchToFirstItem;
+            @SwitchToFirstItem.performed -= instance.OnSwitchToFirstItem;
+            @SwitchToFirstItem.canceled -= instance.OnSwitchToFirstItem;
+            @SwitchToSecondItem.started -= instance.OnSwitchToSecondItem;
+            @SwitchToSecondItem.performed -= instance.OnSwitchToSecondItem;
+            @SwitchToSecondItem.canceled -= instance.OnSwitchToSecondItem;
         }
 
         /// <summary>
@@ -1795,6 +1859,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToFirstItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToFirstItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToSecondItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToSecondItem(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
