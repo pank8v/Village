@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Mirror;
 using Unity.Mathematics;
 using UnityEditor;
 
-public class InventoryComponent : MonoBehaviour
+public class InventoryComponent : NetworkBehaviour
 {
     [SerializeField] private int defaultLayerIndex = 0;
     [SerializeField] private int interactableLayerIndex = 3;
