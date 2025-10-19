@@ -7,6 +7,9 @@ public class CameraController : NetworkBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private float mouseSensitivity = 100f;
     private float xRotation = 0f;
+    
+    public string localLayerName = "LocalPlayer";
+
 
     private void Start() {
         if (!isLocalPlayer) {

@@ -111,9 +111,6 @@ public class InventoryComponent : NetworkBehaviour
             activeItem.Use(user.AttackPosition);
 
         }
-        else {
-            Debug.Log("null");
-        }
     }
     
 

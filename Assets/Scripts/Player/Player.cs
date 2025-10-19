@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
-public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
+using Mirror;
+
+public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageable
 {
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private Health health;
@@ -11,6 +13,7 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
     public event Action OnAttack;
     public event Action OnDrop;
 
+    public string localLayerName = "LocalPlayer";
     public InventoryComponent InventoryComponent => inventoryComponent;
     [SerializeField] private Transform attackPosition;
 
@@ -34,6 +37,28 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
 
       //  inputHandler.OnAttackTriggered -= AttackTrigger;
     }
+
+    private void Start() {
+        if (!isLocalPlayer) return;
+
+        int layer = LayerMask.NameToLayer(localLayerName);
+        SetLayerRecursively(gameObject, layer);
+        
+        Camera mainCam = Camera.main;
+        if (mainCam != null)
+        {
+            mainCam.cullingMask &= ~(1 << layer);
+        }
+    }
+    
+    
+    void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach (Transform t in obj.transform)
+            SetLayerRecursively(t.gameObject, layer);
+    }
+    
     
     private void InteractTrigger() {
         OnInteract?.Invoke();
