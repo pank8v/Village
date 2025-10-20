@@ -39,7 +39,7 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
     }
 
     private void Start() {
-        if (!isLocalPlayer) return;
+     /*   if (!isLocalPlayer) return;
 
         int layer = LayerMask.NameToLayer(localLayerName);
         SetLayerRecursively(gameObject, layer);
@@ -48,7 +48,7 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
         if (mainCam != null)
         {
             mainCam.cullingMask &= ~(1 << layer);
-        }
+        } */
     }
     
     

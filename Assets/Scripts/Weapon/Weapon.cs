@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Mirror;
 
 public class Weapon : MonoBehaviour, IWeapon, IItem
 {
