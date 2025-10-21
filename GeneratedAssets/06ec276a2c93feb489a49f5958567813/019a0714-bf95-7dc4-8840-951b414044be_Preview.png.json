@@ -1,0 +1,11 @@
+{
+    "asset": "06ec276a2c93feb489a49f5958567813",
+    "fileName": "019a0714-bf95-7dc4-8840-951b414044be_Preview.png",
+    "prompt": "stylizable grass",
+    "negativePrompt": "",
+    "model": "575ecf67-4425-4939-97b9-5e138b8ee234",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1475172504,
+    "w3CTraceId": "d2e0e376a0e5f94b495983bd8f847ecc",
+    "refinementMode": "Generation"
+}

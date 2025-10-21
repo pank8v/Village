@@ -1,12 +1,14 @@
 using Mirror;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public class PickupComponent : MonoBehaviour, IInteractable
 {
     private IUser user;
     private IInteractor interactor;
     private IItem item;
+    public event Action OnInteract;
     
 
     private void Awake() {
@@ -21,6 +23,7 @@ public class PickupComponent : MonoBehaviour, IInteractable
         if (interactor != null) {
             this.interactor = interactor;
             AddItem();
+            OnInteract?.Invoke();
         }
     }
     

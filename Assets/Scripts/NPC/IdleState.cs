@@ -12,7 +12,7 @@ public class IdleState : IState
     
     public void Enter() {
         var distanceToCampfire = controller.GetDistanceToCampFire();
-        if (distanceToCampfire > 2.5f) {
+        if (distanceToCampfire > 4f) {
             controller.Agent.SetDestination(controller.CampFire.transform.position);
         }
         else {
@@ -21,6 +21,7 @@ public class IdleState : IState
     }
 
     public void Update() {
+        controller.Animator.Play("HumanM@Idle01");
         var distance = controller.GetDistanceToTarget();
         if (distance < 10f) {
             controller.SwitchToChase();

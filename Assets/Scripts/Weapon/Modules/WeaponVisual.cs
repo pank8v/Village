@@ -13,6 +13,7 @@ public class WeaponVisual : MonoBehaviour, IWeaponModule
    public void Initialize(Weapon weapon) {
       this.weapon = weapon;
       if (this.weapon != null) {
+         weapon.OnAttack -= HandleShot;
          weapon.OnAttack += HandleShot;
       }
    }
@@ -25,8 +26,10 @@ public class WeaponVisual : MonoBehaviour, IWeaponModule
    
 
    private void Update() {
-      recoilRotation = Quaternion.Slerp(recoilRotation, Quaternion.identity, Time.deltaTime * 10f);
-      transform.localRotation = recoilRotation;
+      if (transform.parent != null) {
+         recoilRotation = Quaternion.Slerp(recoilRotation, Quaternion.identity, Time.deltaTime * 10f);
+         transform.localRotation = recoilRotation;
+      }
    }
    
    private void HandleShot() {

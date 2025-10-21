@@ -1,0 +1,11 @@
+{
+    "asset": "06ec276a2c93feb489a49f5958567813",
+    "fileName": "019a0716-3fb3-7b28-94b2-c5d60aa2d828_Preview.png",
+    "prompt": "cartoon ground",
+    "negativePrompt": "",
+    "model": "575ecf67-4425-4939-97b9-5e138b8ee234",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1604092911,
+    "w3CTraceId": "025eaab831f8f43a219372b6a64d6d4f",
+    "refinementMode": "Generation"
+}

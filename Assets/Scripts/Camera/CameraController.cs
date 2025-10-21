@@ -18,7 +18,7 @@ public class CameraController : NetworkBehaviour
         }
     }
     
-    private void Update() {
+    private void LateUpdate() {
         HandleRotation();
     }
     

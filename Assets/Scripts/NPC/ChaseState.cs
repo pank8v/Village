@@ -15,7 +15,8 @@ public class ChaseState : IState
     public void Update() {
         Debug.Log("Chasing");
         var distance = controller.GetDistanceToTarget();
-        controller.Agent.SetDestination(controller.Target.position); 
+        controller.Agent.SetDestination(controller.Target.position);
+        controller.Animator.Play("HumanM@Run01_Forward");
         if (distance <= controller.Agent.stoppingDistance) {
             controller.SwitchToAttack();
         }

@@ -12,6 +12,7 @@ public class RangeAttackModule : MonoBehaviour, IWeaponModule
     public void Initialize(Weapon weapon) {
         this.weapon = weapon;
         if (this.weapon) {
+            weapon.OnAttack -= Shoot;
             weapon.OnAttack += Shoot;
         }
     }

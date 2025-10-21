@@ -9,6 +9,7 @@ public class WeaponSound : MonoBehaviour, IWeaponModule
    public void Initialize(Weapon weapon) {
       this.weapon = weapon;
       if (this.weapon != null) {
+         weapon.OnAttack -= PlayShootSound;
          weapon.OnAttack += PlayShootSound;
       }
    }
