@@ -1179,6 +1179,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""1c43dbeb-77c5-4a85-a243-0e3622343997"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""a83d5272-7f71-4bd4-9f08-8ed8c48e7476"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1201,6 +1219,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a901d58-ad5f-4daa-b57d-2d0816262d45"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""829548d3-79cb-4a2b-84a6-6e89dd5c89b5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Close"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1301,6 +1341,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Inspector = asset.FindActionMap("Inspector", throwIfNotFound: true);
         m_Inspector_Inspect = m_Inspector.FindAction("Inspect", throwIfNotFound: true);
         m_Inspector_Rotate = m_Inspector.FindAction("Rotate", throwIfNotFound: true);
+        m_Inspector_Zoom = m_Inspector.FindAction("Zoom", throwIfNotFound: true);
+        m_Inspector_Close = m_Inspector.FindAction("Close", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1808,6 +1850,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IInspectorActions> m_InspectorActionsCallbackInterfaces = new List<IInspectorActions>();
     private readonly InputAction m_Inspector_Inspect;
     private readonly InputAction m_Inspector_Rotate;
+    private readonly InputAction m_Inspector_Zoom;
+    private readonly InputAction m_Inspector_Close;
     /// <summary>
     /// Provides access to input actions defined in input action map "Inspector".
     /// </summary>
@@ -1827,6 +1871,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Inspector/Rotate".
         /// </summary>
         public InputAction @Rotate => m_Wrapper.m_Inspector_Rotate;
+        /// <summary>
+        /// Provides access to the underlying input action "Inspector/Zoom".
+        /// </summary>
+        public InputAction @Zoom => m_Wrapper.m_Inspector_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "Inspector/Close".
+        /// </summary>
+        public InputAction @Close => m_Wrapper.m_Inspector_Close;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1859,6 +1911,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Rotate.started += instance.OnRotate;
             @Rotate.performed += instance.OnRotate;
             @Rotate.canceled += instance.OnRotate;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
         }
 
         /// <summary>
@@ -1876,6 +1934,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Rotate.started -= instance.OnRotate;
             @Rotate.performed -= instance.OnRotate;
             @Rotate.canceled -= instance.OnRotate;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
         }
 
         /// <summary>
@@ -2172,5 +2236,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRotate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Close" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClose(InputAction.CallbackContext context);
     }
 }

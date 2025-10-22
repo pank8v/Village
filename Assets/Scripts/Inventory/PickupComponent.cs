@@ -26,9 +26,10 @@ public class PickupComponent : MonoBehaviour, IInteractable
             OnInteract?.Invoke();
         }
     }
-    
     private void AddItem() {
         user = (interactor as IUser);
+        var player = interactor as Player;
+        if(player != null){}
         if (user != null) {
             user.InventoryComponent.AddItem(item);
         }

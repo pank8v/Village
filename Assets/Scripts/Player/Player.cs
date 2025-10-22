@@ -17,6 +17,9 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
     public string localLayerName = "LocalPlayer";
     public InventoryComponent InventoryComponent => inventoryComponent;
     [SerializeField] private Transform attackPosition;
+    
+    [SerializeField] private ObjectInspector objectInspector;
+    public ObjectInspector ObjectInspector => objectInspector;
 
     public Transform AttackPosition => attackPosition;
 
