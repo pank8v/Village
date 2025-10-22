@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: -438019660284082775}
   - component: {fileID: -6504612187411746020}
   - component: {fileID: 5178649994433958142}
+  - component: {fileID: 5873347819754411259}
   m_Layer: 7
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -649,6 +650,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dfdb668e-3a51-47e6-ab92-7f6ec6e524f1
     m_ActionName: 'Player/SwitchToSecondItem[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -438019660284082775}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnReloadPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e4004034-3225-4d79-a093-0b30707f19ec
+    m_ActionName: 'Player/Reload[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -673,6 +690,19 @@ MonoBehaviour:
   interactableLayerIndex: 3
   maxItems: 6
   itemHolder: {fileID: 6474031612822052788}
+--- !u!114 &5873347819754411259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788320170435643911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052ceb3819ba36848bfbf59d247d7711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPhysics
+  pushPower: 4
 --- !u!1 &8866475313880595407
 GameObject:
   m_ObjectHideFlags: 0

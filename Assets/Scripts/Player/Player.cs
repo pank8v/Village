@@ -12,21 +12,21 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
     public event Action OnInteract;
     public event Action OnAttack;
     public event Action OnDrop;
+    public event Action OnReload;
 
     public string localLayerName = "LocalPlayer";
     public InventoryComponent InventoryComponent => inventoryComponent;
     [SerializeField] private Transform attackPosition;
 
     public Transform AttackPosition => attackPosition;
-    
+
     
     private void OnEnable() {
         inputHandler.OnInteractTriggered += InteractTrigger;
-    //    inputHandler.OnAttackTriggered += AttackTrigger;
-    inputHandler.OnAttackTriggered += UseTrigger;
-    inputHandler.OnDropTriggered += DropTrigger;
-    inputHandler.OnItemSwitch += SwitchTrigger;
-    
+        inputHandler.OnAttackTriggered += UseTrigger;
+        inputHandler.OnDropTriggered += DropTrigger;
+        inputHandler.OnItemSwitch += SwitchTrigger;
+        inputHandler.OnReload += ReloadTrigger;
     }
 
     private void OnDisable() {
@@ -34,8 +34,7 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
         inputHandler.OnAttackTriggered -= UseTrigger;
         inputHandler.OnDropTriggered -= DropTrigger;
         inputHandler.OnItemSwitch -= SwitchTrigger;
-
-      //  inputHandler.OnAttackTriggered -= AttackTrigger;
+        inputHandler.OnReload -= ReloadTrigger;
     }
 
     private void Start() {
@@ -80,7 +79,13 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
         OnItemSwitch?.Invoke(index);
     }
     
+    private void ReloadTrigger() {
+        OnReload?.Invoke();
+    }
+    
     public void TakeDamage(float damage) {
         health.TakeDamage(damage);
     }
+
+   
 }

@@ -25,6 +25,7 @@ public class InventoryComponent : NetworkBehaviour
             user.OnUse += UseItem;
             user.OnDrop += DropItem;
             user.OnItemSwitch += SwitchItem;
+            user.OnReload += Reload;
         }
     }
     
@@ -33,6 +34,7 @@ public class InventoryComponent : NetworkBehaviour
             user.OnUse -= UseItem;
             user.OnDrop -= DropItem;
             user.OnItemSwitch -= SwitchItem;
+            user.OnReload -= Reload;
         }
     }
      
@@ -112,6 +114,12 @@ public class InventoryComponent : NetworkBehaviour
 
         }
     }
-    
+
+    private void Reload() {
+     var weapon = activeItem as Weapon;
+        if (weapon != null) {
+            weapon.Reload();
+        }
+    }
 
 }

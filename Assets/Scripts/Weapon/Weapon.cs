@@ -30,12 +30,16 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
    public void Use(Transform raycastPosition) {
       Attack(raycastPosition);
    }
-   
+
+   public void Reload() {
+      OnReload?.Invoke();
+   }
    
    public void Attack(Transform attackPos) {
-      if (fireTimer >= weaponContext.fireRate) {
+      if (fireTimer >= weaponContext.fireRate && weaponContext.ammo > 0 && weaponContext.canAttack) {
          weaponContext.attackPosition = attackPos;
          OnAttack?.Invoke();
+         weaponContext.ammo--;
          fireTimer = 0;
       }
 

@@ -8,4 +8,5 @@ public interface IUser
     public event Action OnUse;
     public event Action OnDrop;
     public event Action<int> OnItemSwitch;
+    public event Action OnReload;
 }
