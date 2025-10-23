@@ -1,7 +1,10 @@
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class InteractionComponent : MonoBehaviour
 {
+    [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform interactorTransform;
     [SerializeField] private float detectionRadius = 2f;
     [SerializeField] private float maxViewAngle = 90f;
@@ -53,8 +56,14 @@ public class InteractionComponent : MonoBehaviour
 
 
     private void Interact() {
-        if (currentInteractable != null) {
-            currentInteractable.Interact(interactor);
+        RaycastHit hit;
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.forward, out hit, 2f)) {
+            if (hit.collider.TryGetComponent<IInteractable>(out var interactable)) {
+                interactable.Interact(interactor);
+            }
         }
+     //   if (currentInteractable != null) {
+       //     currentInteractable.Interact(interactor);
+       // }
     }
 }

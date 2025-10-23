@@ -1,8 +1,7 @@
 using UnityEngine;
 using System;
-using Mirror;
 
-public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageable
+public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
 {
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private Health health;
@@ -41,7 +40,6 @@ public class Player : NetworkBehaviour, IInteractor, IAttacker,IUser, IDamageabl
     }
 
     private void Start() {
-        if (!isLocalPlayer) return;
 
         int layer = LayerMask.NameToLayer(localLayerName);
         SetLayerRecursively(gameObject, layer);

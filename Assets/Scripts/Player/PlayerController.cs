@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
-using Mirror;
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private CharacterController characterController;

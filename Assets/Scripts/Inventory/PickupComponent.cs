@@ -1,5 +1,4 @@
-using Mirror;
-using UnityEditor;
+
 using UnityEngine;
 using System;
 
@@ -8,6 +7,8 @@ public class PickupComponent : MonoBehaviour, IInteractable
     private IUser user;
     private IInteractor interactor;
     private IItem item;
+    [SerializeField] private bool isInspectable;
+    public bool IsInspectable => isInspectable;
     public event Action OnInteract;
     
 
@@ -20,16 +21,20 @@ public class PickupComponent : MonoBehaviour, IInteractable
     }
     
     public void Interact(IInteractor interactor) {
-        if (interactor != null) {
-            this.interactor = interactor;
-            AddItem();
-            OnInteract?.Invoke();
+        if (isInspectable) {
+            interactor.ObjectInspector.StartInspection(gameObject);
         }
+        else {
+            if (interactor != null) { 
+                this.interactor = interactor;
+                AddItem();
+                OnInteract?.Invoke();
+            } 
+        }
+       
     }
     private void AddItem() {
         user = (interactor as IUser);
-        var player = interactor as Player;
-        if(player != null){}
         if (user != null) {
             user.InventoryComponent.AddItem(item);
         }

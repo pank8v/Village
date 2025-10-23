@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88a1da96c4b3db42b257bd39be86007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionComponent
+  mainCamera: {fileID: 4165006523658129681}
   interactorTransform: {fileID: 4165006523658129681}
   detectionRadius: 2
   maxViewAngle: 90

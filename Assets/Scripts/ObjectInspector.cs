@@ -27,6 +27,7 @@ public class ObjectInspector : MonoBehaviour
             playerInput.SwitchCurrentActionMap("Inspector");
         }
 
+        
         objectToInspect = newObject;
         objectToInspect.transform.SetParent(inspectObject);
         inspectObject.transform.localRotation = Quaternion.identity;

@@ -1,22 +1,13 @@
-using Mirror;
+
 using UnityEngine;
 
-public class CameraController : NetworkBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform playerBody;
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private float mouseSensitivity = 100f;
     private float xRotation = 0f;
     
-    public string localLayerName = "LocalPlayer";
-
-
-    private void Start() {
-        if (!isLocalPlayer) {
-            GetComponentInChildren<Camera>().enabled = false;
-            return;
-        }
-    }
     
     private void LateUpdate() {
         HandleRotation();

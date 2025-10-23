@@ -1,4 +1,3 @@
-using Mirror;
 using UnityEngine;
 
 public class Food : MonoBehaviour, IItem
