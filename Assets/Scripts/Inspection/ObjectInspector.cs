@@ -33,7 +33,8 @@ public class ObjectInspector : MonoBehaviour
         inspectObject.transform.localRotation = Quaternion.identity;
         objectToInspect.transform.localPosition = Vector3.zero;
         objectToInspect.transform.localRotation = Quaternion.identity;
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
     public void OnInspect(InputAction.CallbackContext ctx) {
