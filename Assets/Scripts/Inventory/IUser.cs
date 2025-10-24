@@ -4,7 +4,8 @@ public interface IUser
 {
     public Transform AttackPosition { get;  }
 
-    public InventoryComponent InventoryComponent { get; }
+    public void TryAddItem(IItem item);
+
     public ObjectInspector ObjectInspector { get; }
     public event Action OnUse;
     public event Action OnDrop;

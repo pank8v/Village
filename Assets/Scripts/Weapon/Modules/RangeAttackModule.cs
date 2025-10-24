@@ -17,8 +17,6 @@ public class RangeAttackModule : MonoBehaviour, IWeaponModule
         }
     }
 
-
-
     private void Shoot() {
         Vector3 targetPoint;
         RaycastHit hit;

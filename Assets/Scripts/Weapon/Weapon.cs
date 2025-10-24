@@ -10,12 +10,10 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
    
    private IWeaponModule[] modules;
    public WeaponContext weaponContext;
-
-   private GameObject itemGameObject;
-   public GameObject ItemGameObject => itemGameObject;
+   
+   public GameObject ItemGameObject => gameObject;
    
    private void Awake() {
-      itemGameObject = gameObject;
       modules = GetComponents<IWeaponModule>();
       for (int i = 0; i < modules.Length; i++) {
          modules[i].Initialize(this);
@@ -28,6 +26,7 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
 
    public void Use(Transform raycastPosition) {
       Attack(raycastPosition);
+      Debug.Log("use");
    }
 
    public void Reload() {
@@ -35,6 +34,9 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
    }
    
    public void Attack(Transform attackPos) {
+      if (attackPos == null) {
+         return;
+      }
       if (fireTimer >= weaponContext.fireRate && weaponContext.ammo > 0 && weaponContext.canAttack) {
          weaponContext.attackPosition = attackPos;
          OnAttack?.Invoke();

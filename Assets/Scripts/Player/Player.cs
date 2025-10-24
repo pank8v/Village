@@ -22,6 +22,9 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
 
     public Transform AttackPosition => attackPosition;
 
+    public void TryAddItem(IItem item) {
+        InventoryComponent.AddItem(item);
+    }
     
     private void OnEnable() {
         inputHandler.OnInteractTriggered += InteractTrigger;

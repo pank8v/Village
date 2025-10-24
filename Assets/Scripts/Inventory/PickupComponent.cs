@@ -36,7 +36,7 @@ public class PickupComponent : MonoBehaviour, IInteractable
     private void AddItem() {
         user = (interactor as IUser);
         if (user != null) {
-            user.InventoryComponent.AddItem(item);
+            user.TryAddItem(item);
         }
     }
 
