@@ -70,5 +70,7 @@ public class ObjectInspector : MonoBehaviour
         objectToInspect.transform.SetParent(null);
         isInspecting = false;
         playerInput.SwitchCurrentActionMap("Player");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
