@@ -92,7 +92,7 @@ public class InventoryComponent : MonoBehaviour
     
     private void UseItem() {
         var item = _inventory.ActiveSlot.Item;
-        item?.Use(_user.AttackPosition);
+        item?.Use(_user.AttackPosition, _user);
     }
 
     private void Reload() {

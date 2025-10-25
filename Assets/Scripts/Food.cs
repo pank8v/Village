@@ -9,7 +9,7 @@ public class Food : MonoBehaviour, IItem
         itemGameObject = gameObject;
     }
 
-    public void Use(Transform raycastPosition) {
+    public void Use(Transform raycastPosition, IUser user) {
         Debug.Log("Food used");
     }
 }

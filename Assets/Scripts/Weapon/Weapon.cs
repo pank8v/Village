@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
       fireTimer += Time.deltaTime;
    }
 
-   public void Use(Transform raycastPosition) {
+   public void Use(Transform raycastPosition, IUser user) {
       Attack(raycastPosition);
       Debug.Log("use");
    }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
+public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
 {
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private Health health;
@@ -91,5 +91,8 @@ public class Player : MonoBehaviour, IInteractor, IAttacker,IUser, IDamageable
         health.TakeDamage(damage);
     }
 
-   
+    public void InspectObject(GameObject item) {
+        objectInspector.StartInspection(item);
+    }
+    
 }

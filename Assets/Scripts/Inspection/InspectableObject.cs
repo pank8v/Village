@@ -1,10 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InspectableObject : MonoBehaviour, IInteractable
 {
-    [SerializeField] private bool isInspectable;
-    public bool IsInspectable => isInspectable;
     public void Interact(IInteractor interactor) {
-        interactor.ObjectInspector.StartInspection(gameObject);
+        var inspector = interactor as IInspector;
+        if (inspector != null) {
+            inspector.InspectObject(gameObject);
+        }
     }
 }

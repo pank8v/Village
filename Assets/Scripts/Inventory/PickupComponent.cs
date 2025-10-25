@@ -7,8 +7,6 @@ public class PickupComponent : MonoBehaviour, IInteractable
     private IUser user;
     private IInteractor interactor;
     private IItem item;
-    [SerializeField] private bool isInspectable;
-    public bool IsInspectable => isInspectable;
     public event Action OnInteract;
     
 
@@ -17,20 +15,15 @@ public class PickupComponent : MonoBehaviour, IInteractable
     }
     
     public void Use(Transform raycastPosition) {
-        item.Use(raycastPosition);
+        item.Use(raycastPosition, user);
     }
     
     public void Interact(IInteractor interactor) {
-        if (isInspectable) {
-            interactor.ObjectInspector.StartInspection(gameObject);
-        }
-        else {
             if (interactor != null) { 
                 this.interactor = interactor;
                 AddItem();
                 OnInteract?.Invoke();
             } 
-        }
        
     }
     private void AddItem() {

@@ -11,6 +11,7 @@ public class ObjectInspector : MonoBehaviour
     [SerializeField] private float maxDistance = 1f;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
+    private Transform originalParent;
     private bool isInspecting = false;
     private Vector2 rotateInput;
     private float currentDistance = 1f;
@@ -22,6 +23,7 @@ public class ObjectInspector : MonoBehaviour
     public void StartInspection(GameObject newObject){        
         originalPosition = newObject.transform.position;
         originalRotation = newObject.transform.rotation;
+        originalParent = newObject.transform.parent;
         
         if (playerInput != null) {
             playerInput.SwitchCurrentActionMap("Inspector");
@@ -31,8 +33,9 @@ public class ObjectInspector : MonoBehaviour
         objectToInspect = newObject;
         objectToInspect.transform.SetParent(inspectObject);
         inspectObject.transform.localRotation = Quaternion.identity;
-        objectToInspect.transform.localPosition = Vector3.zero;
+        objectToInspect.transform.localPosition = new Vector3(0, 0 ,0);
         objectToInspect.transform.localRotation = Quaternion.identity;
+        inspectObject.localPosition = new Vector3(0, 0, currentDistance);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -67,7 +70,7 @@ public class ObjectInspector : MonoBehaviour
     public void FinishInspection(InputAction.CallbackContext ctx) {
         objectToInspect.transform.position = originalPosition;
         objectToInspect.transform.rotation = originalRotation;
-        objectToInspect.transform.SetParent(null);
+        objectToInspect.transform.SetParent(originalParent);
         isInspecting = false;
         playerInput.SwitchCurrentActionMap("Player");
         Cursor.visible = false;
