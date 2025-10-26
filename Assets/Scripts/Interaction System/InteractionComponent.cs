@@ -33,7 +33,6 @@ public class InteractionComponent : MonoBehaviour
         Ray ray = new Ray(mainCamera.position, mainCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange)) {
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable)) {
-                Debug.Log(interactable);
                 currentInteractable = interactable;
             }
         }

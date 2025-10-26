@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class Radio : MonoBehaviour, IItem
+public class Key : MonoBehaviour, IItem
 {
     [SerializeField] private ItemData data;
     public ItemData ItemData => data;
     public GameObject ItemGameObject => gameObject;
-    
     public void Use(Transform _, IUser user) {
-        var inspector = user as IInspector;
-        if (inspector != null) {
-            inspector.InspectObject(ItemGameObject);
-        }
+        
     }
 }
-    

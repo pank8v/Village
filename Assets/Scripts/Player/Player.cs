@@ -66,10 +66,7 @@ public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
     private void InteractTrigger() {
         OnInteract?.Invoke();
     }
-
-    private void AttackTrigger() {
-        OnAttack?.Invoke();
-    }
+    
 
     private void UseTrigger() {
         OnUse?.Invoke();
@@ -93,6 +90,10 @@ public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
 
     public void InspectObject(GameObject item) {
         objectInspector.StartInspection(item);
+    }
+
+    public bool CheckRequiredItem(string itemId) {
+      return inventoryComponent.CheckItem(itemId);
     }
     
 }

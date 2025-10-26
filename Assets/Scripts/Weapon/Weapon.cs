@@ -3,6 +3,8 @@ using System;
 
 public class Weapon : MonoBehaviour, IWeapon, IItem
 {
+   [SerializeField] private ItemData data;
+   public ItemData ItemData => data;
    public event Action OnAttack;
    public event Action OnReload;
 

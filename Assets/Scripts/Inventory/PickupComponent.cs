@@ -31,6 +31,5 @@ public class PickupComponent : MonoBehaviour, IInteractable
             user.TryAddItem(item);
         }
     }
-    
 
 }

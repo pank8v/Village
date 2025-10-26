@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Food : MonoBehaviour, IItem
 {
+    [SerializeField] private ItemData data;
+    public ItemData ItemData => data;
     private GameObject itemGameObject;
     public GameObject ItemGameObject => itemGameObject;
 

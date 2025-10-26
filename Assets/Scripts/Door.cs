@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Rigidbody doorBody;
+    [SerializeField] private string itemId;
+
+    [SerializeField] private Rigidbody _rb;
     public void Interact(IInteractor interactor) {
-        doorBody.linearVelocity = new Vector3(0, 0, 1) * 10f;
+        if (interactor.CheckRequiredItem(itemId)) {
+            _rb.isKinematic = false;
+        }
+        else {
+            Debug.Log("door requires key");
+        }
     }
     
 }

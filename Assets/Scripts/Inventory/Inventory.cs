@@ -58,5 +58,14 @@ public class Inventory
         OnItemSwitched?.Invoke(_slots[index]);
     }
 
+    public bool CheckItem(string Id) {
+        for (int i = 0; i < _slots.Length; i++) {
+            if (!_slots[i].IsEmpty && _slots[i].Item?.ItemData?.Id == Id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public InventorySlot GetSlot(int index) => _slots[index];
 }

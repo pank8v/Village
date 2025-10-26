@@ -104,4 +104,7 @@ public class InventoryComponent : MonoBehaviour
         }
     }
 
+    public bool CheckItem(string id) {
+       return _inventory.CheckItem(id);
+    }
 }

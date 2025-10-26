@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FlashLight : MonoBehaviour, IItem
 {
+    [SerializeField] private ItemData data;
+    public ItemData ItemData => data;
     [SerializeField] private Light light;
     public GameObject ItemGameObject => gameObject;
 
