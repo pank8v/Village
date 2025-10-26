@@ -5,13 +5,10 @@ using Vector3 = UnityEngine.Vector3;
 public class InteractionComponent : MonoBehaviour
 {
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private Transform interactorTransform;
-    [SerializeField] private float detectionRadius = 2f;
-    [SerializeField] private float maxViewAngle = 90f;
+    [SerializeField] private float interactRange = 4f;
     [SerializeField] private LayerMask detectionLayerMask;
     
     private IInteractor interactor;
-    private IInteractable lastInteractable;
     private IInteractable currentInteractable;
 
     private void Awake() {
@@ -33,22 +30,10 @@ public class InteractionComponent : MonoBehaviour
 
     private void FindInteractableObjects() {
         currentInteractable = null;
-        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, detectionLayerMask);
-        float minDistance = Mathf.Infinity;
-        for (int i = 0; i < hits.Length; i++) {
-            IInteractable interactable = hits[i].GetComponent<IInteractable>();
-            if (interactable == null) {
-                continue;
-            }
-            Vector3 closestPoint = hits[i].ClosestPoint(transform.position);
-            Vector3 dirToObject = (closestPoint - interactorTransform.position).normalized;
-            float angle = Vector3.Angle(interactorTransform.forward, dirToObject);
-            if (angle > maxViewAngle/2) {
-                continue;
-            }
-            float distance = Vector3.Distance(interactorTransform.position, closestPoint);
-            if (distance < minDistance) {
-                minDistance = distance;
+        Ray ray = new Ray(mainCamera.position, mainCamera.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactRange)) {
+            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable)) {
+                Debug.Log(interactable);
                 currentInteractable = interactable;
             }
         }
@@ -57,13 +42,10 @@ public class InteractionComponent : MonoBehaviour
 
     private void Interact() {
         RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.forward, out hit, 2f)) {
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.forward, out hit, interactRange,~0, QueryTriggerInteraction.Ignore)) {
             if (hit.collider.TryGetComponent<IInteractable>(out var interactable)) {
                 interactable.Interact(interactor);
             }
         }
-     //   if (currentInteractable != null) {
-       //     currentInteractable.Interact(interactor);
-       // }
     }
 }

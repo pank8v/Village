@@ -50,6 +50,7 @@ public class InventoryComponent : MonoBehaviour
         if (itemGO.TryGetComponent(out Rigidbody rb)) {
             rb.isKinematic = true;
         }
+        
 
         if (_inventory.ActiveSlot != slot) {
             itemGO.SetActive(false);
@@ -65,6 +66,7 @@ public class InventoryComponent : MonoBehaviour
         itemGO.layer = 3;
         if (itemGO.TryGetComponent(out Rigidbody rb))
             rb.isKinematic = false;
+        
     }
 
     private void HandleItemSwitched(InventorySlot slot) {

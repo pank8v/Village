@@ -59,6 +59,26 @@ public class InputHandler : MonoBehaviour
         OnItemSwitch?.Invoke(1);
     }
 
+    public void OnThirdItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(2);
+    }
+
+    public void OnFourthItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(3);
+    }
+
+    public void OnFifthItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(4);
+    }
+
+    public void OnSixthItemSwitchPerformed(InputAction.CallbackContext ctx) {
+        if (!ctx.performed) return;
+        OnItemSwitch?.Invoke(5);
+    }
+    
     public void OnReloadPerformed(InputAction.CallbackContext ctx) {
         if (!ctx.performed) return;
         OnReload?.Invoke();

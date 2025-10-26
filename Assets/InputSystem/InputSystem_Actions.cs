@@ -201,6 +201,42 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""SwitchToThirdItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c8b6134-eb7a-4320-9231-5a6d24978cb8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToFourthItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""4566ac15-afea-4cef-bf16-53c50f0b7152"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToFifthItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff7074a7-0558-4d32-822f-c2091517468e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToSixthItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec5ee9c2-3135-482d-99ab-baaab17246da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""e4004034-3225-4d79-a093-0b30707f19ec"",
@@ -637,6 +673,50 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba6fa243-bc8a-483d-9cdd-3433ffe42534"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToThirdItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""359b6d16-02ee-4d65-8fe9-dbbd3d8b8131"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToFourthItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91f9149e-d744-4146-af45-85c347c70d76"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToFifthItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4db18507-cca9-43b4-ab80-331a98f60f94"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SwitchToSixthItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1324,6 +1404,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_SwitchToFirstItem = m_Player.FindAction("SwitchToFirstItem", throwIfNotFound: true);
         m_Player_SwitchToSecondItem = m_Player.FindAction("SwitchToSecondItem", throwIfNotFound: true);
+        m_Player_SwitchToThirdItem = m_Player.FindAction("SwitchToThirdItem", throwIfNotFound: true);
+        m_Player_SwitchToFourthItem = m_Player.FindAction("SwitchToFourthItem", throwIfNotFound: true);
+        m_Player_SwitchToFifthItem = m_Player.FindAction("SwitchToFifthItem", throwIfNotFound: true);
+        m_Player_SwitchToSixthItem = m_Player.FindAction("SwitchToSixthItem", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1437,6 +1521,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_SwitchToFirstItem;
     private readonly InputAction m_Player_SwitchToSecondItem;
+    private readonly InputAction m_Player_SwitchToThirdItem;
+    private readonly InputAction m_Player_SwitchToFourthItem;
+    private readonly InputAction m_Player_SwitchToFifthItem;
+    private readonly InputAction m_Player_SwitchToSixthItem;
     private readonly InputAction m_Player_Reload;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1497,6 +1585,22 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SwitchToSecondItem".
         /// </summary>
         public InputAction @SwitchToSecondItem => m_Wrapper.m_Player_SwitchToSecondItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToThirdItem".
+        /// </summary>
+        public InputAction @SwitchToThirdItem => m_Wrapper.m_Player_SwitchToThirdItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToFourthItem".
+        /// </summary>
+        public InputAction @SwitchToFourthItem => m_Wrapper.m_Player_SwitchToFourthItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToFifthItem".
+        /// </summary>
+        public InputAction @SwitchToFifthItem => m_Wrapper.m_Player_SwitchToFifthItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SwitchToSixthItem".
+        /// </summary>
+        public InputAction @SwitchToSixthItem => m_Wrapper.m_Player_SwitchToSixthItem;
         /// <summary>
         /// Provides access to the underlying input action "Player/Reload".
         /// </summary>
@@ -1563,6 +1667,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SwitchToSecondItem.started += instance.OnSwitchToSecondItem;
             @SwitchToSecondItem.performed += instance.OnSwitchToSecondItem;
             @SwitchToSecondItem.canceled += instance.OnSwitchToSecondItem;
+            @SwitchToThirdItem.started += instance.OnSwitchToThirdItem;
+            @SwitchToThirdItem.performed += instance.OnSwitchToThirdItem;
+            @SwitchToThirdItem.canceled += instance.OnSwitchToThirdItem;
+            @SwitchToFourthItem.started += instance.OnSwitchToFourthItem;
+            @SwitchToFourthItem.performed += instance.OnSwitchToFourthItem;
+            @SwitchToFourthItem.canceled += instance.OnSwitchToFourthItem;
+            @SwitchToFifthItem.started += instance.OnSwitchToFifthItem;
+            @SwitchToFifthItem.performed += instance.OnSwitchToFifthItem;
+            @SwitchToFifthItem.canceled += instance.OnSwitchToFifthItem;
+            @SwitchToSixthItem.started += instance.OnSwitchToSixthItem;
+            @SwitchToSixthItem.performed += instance.OnSwitchToSixthItem;
+            @SwitchToSixthItem.canceled += instance.OnSwitchToSixthItem;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
@@ -1613,6 +1729,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SwitchToSecondItem.started -= instance.OnSwitchToSecondItem;
             @SwitchToSecondItem.performed -= instance.OnSwitchToSecondItem;
             @SwitchToSecondItem.canceled -= instance.OnSwitchToSecondItem;
+            @SwitchToThirdItem.started -= instance.OnSwitchToThirdItem;
+            @SwitchToThirdItem.performed -= instance.OnSwitchToThirdItem;
+            @SwitchToThirdItem.canceled -= instance.OnSwitchToThirdItem;
+            @SwitchToFourthItem.started -= instance.OnSwitchToFourthItem;
+            @SwitchToFourthItem.performed -= instance.OnSwitchToFourthItem;
+            @SwitchToFourthItem.canceled -= instance.OnSwitchToFourthItem;
+            @SwitchToFifthItem.started -= instance.OnSwitchToFifthItem;
+            @SwitchToFifthItem.performed -= instance.OnSwitchToFifthItem;
+            @SwitchToFifthItem.canceled -= instance.OnSwitchToFifthItem;
+            @SwitchToSixthItem.started -= instance.OnSwitchToSixthItem;
+            @SwitchToSixthItem.performed -= instance.OnSwitchToSixthItem;
+            @SwitchToSixthItem.canceled -= instance.OnSwitchToSixthItem;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
@@ -2129,6 +2257,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwitchToSecondItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToThirdItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToThirdItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToFourthItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToFourthItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToFifthItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToFifthItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchToSixthItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchToSixthItem(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Reload" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
