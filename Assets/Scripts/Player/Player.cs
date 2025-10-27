@@ -3,9 +3,11 @@ using System;
 
 public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
 {
+    [SerializeField] private CharacterController controller;
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private Health health;
     [SerializeField] private InventoryComponent inventoryComponent;
+    [SerializeField] private HidingSystem hidingSystem;
     public event Action OnUse;
     public event Action<int> OnItemSwitch;
     public event Action OnInteract;
@@ -43,7 +45,6 @@ public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
     }
 
     private void Start() {
-
         int layer = LayerMask.NameToLayer(localLayerName);
         SetLayerRecursively(gameObject, layer);
         
@@ -94,6 +95,12 @@ public class Player : MonoBehaviour, IInteractor,IUser, IInspector, IDamageable
 
     public bool CheckRequiredItem(string itemId) {
       return inventoryComponent.CheckItem(itemId);
+    }
+
+    public void Hide(Transform hidingPoint) {
+        if (hidingSystem) {
+            hidingSystem.ToggleHide(hidingPoint);
+        }
     }
     
 }

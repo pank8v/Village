@@ -32,7 +32,9 @@ public class Weapon : MonoBehaviour, IWeapon, IItem
    }
 
    public void Reload() {
-      OnReload?.Invoke();
+      if (weaponContext.ammo < weaponContext.initialAmmo) {
+         OnReload?.Invoke();
+      }
    }
    
    public void Attack(Transform attackPos) {
