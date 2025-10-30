@@ -51,13 +51,23 @@ public class InventoryComponent : MonoBehaviour
             rb.isKinematic = true;
         }
         
-
         if (_inventory.ActiveSlot != slot) {
             itemGO.SetActive(false);
         }
         else {
             itemGO.SetActive(true);
         }
+         
+        // hide visual pickup
+        var trigger = itemGO.GetComponentInChildren<TriggerCollider>();
+        var visual = itemGO.GetComponentInChildren<Canvas>();
+        if (trigger != null) {
+            trigger.enabled = false;
+        }
+        if (visual != null) {
+            visual.enabled = false;
+        }
+        
     }
 
     private void HandleItemRemoved(IItem item) {
@@ -66,6 +76,17 @@ public class InventoryComponent : MonoBehaviour
         itemGO.layer = 3;
         if (itemGO.TryGetComponent(out Rigidbody rb))
             rb.isKinematic = false;
+        
+        // show visual pickup
+        var trigger = itemGO.GetComponentInChildren<TriggerCollider>();
+        var visual = itemGO.GetComponentInChildren<Canvas>();
+        if (trigger != null) {
+            trigger.enabled = true;
+        }
+        if (visual != null) {
+            visual.enabled = true;
+        }
+        
         
     }
 

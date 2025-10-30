@@ -13286,6 +13286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843cd2aa3779d884389beea44bf460ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HidingSystem
+  positionDuration: 0.3
+  rotationDuration: 0.5
 --- !u!1 &1322258596
 GameObject:
   m_ObjectHideFlags: 0
@@ -22325,6 +22327,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: e31e30d7e945a1b4eb5fc4da6826126d, type: 2}
+    - target: {fileID: 3296339663538427235, guid: 48071217b3f8c4b4fb138668f59fd345, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7175854823764447848, guid: 48071217b3f8c4b4fb138668f59fd345, type: 3}
       propertyPath: m_Name
       value: Key
